@@ -12,10 +12,10 @@ const Header = async () => {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="sticky top-0 bg-white dark:bg-gray-900">
+    <header className="sticky top-0 bg-white dark:bg-gray-900 z-40">
       <nav className="flex flex-col gap-5 sm:flex-row items-center p-5 max-w-7xl mx-auto bg-white dark:bg-gray-900">
         <Link href="/">
-          <span className="flex z-40 font-bold text-2xl">SpeakeEase</span>
+          <span className="flex z-40 font-bold text-2xl">SpeakEase</span>
         </Link>
 
         <div className="flex flex-1 items-center justify-end space-x-3">
