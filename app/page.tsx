@@ -1,5 +1,8 @@
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MoveRight } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -38,9 +41,9 @@ export default function Home() {
               </Link>
               <Link
                 href="/pricing"
-                className="text-sm font-semibold leading-6 text-gray-980 dark:text-gray-300"
+                className='text-sm font-semibold leading-6 text-gray-980 flex items-center dark:text-gray-300 '
               >
-                View Pricing <span aria-hidden="true">→</span>
+                View Pricing <MoveRight className="h-5 w-5 ml-1.5" />
               </Link>
             </div>
           </div>
