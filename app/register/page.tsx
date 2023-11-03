@@ -8,8 +8,8 @@ const Register = async () => {
   
 
   return (
-    <div className="isolate h-full overflow-hidden Obg-gray-900 pb-40">
-      <div className="mx-auto max-w-7xl px-6 pb-12 pt-16 text-white text-center lg:px-8">
+    <div className="isolate h-full overflow-hidden dark:bg-gray-900 pb-40 px-5">
+      <div className="mx-auto max-w-7xl px-6 pb-12 pt-16 text-center lg:px-8">
         <div className="mx-auto max-w-4xl">
           <p className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
             Lets handle your Membership {session?.user?.name?.split(' ')?.[0]}!
@@ -19,7 +19,7 @@ const Register = async () => {
           <svg
             viewBox="0 0 1208 1024"
             className="absolute -top-10 left-1/2 -z-10 h-[64 rem] -translate-x-1/2
-        [mask-image: radial-gradient (closest-side, white, transparent)] sm:-top-12
+        [mask-image:radial-gradient(closest-side,white,transparent)] sm:-top-12
         md:-top-20 lg:-top-12 xl:top-0"
           >
             <ellipse

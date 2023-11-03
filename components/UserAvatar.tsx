@@ -21,7 +21,7 @@ const UserAvatar = ({ name, image, className }: Props) => {
           className="rounded-full"
         />
       )}
-      <AvatarFallback className='dark:bg-white dark:text-black'>{name?.split(' ').map((n) => n[0].toUpperCase())}</AvatarFallback>
+      <AvatarFallback className='dark:bg-white dark:text-black'>{name?.split(' ').map((n) => n[0]?.toUpperCase())}</AvatarFallback>
     </Avatar>
   );
 };

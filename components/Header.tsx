@@ -10,6 +10,7 @@ import CreateChatButton from './CreateChatButton';
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
+  console.log(session);
 
   return (
     <header className="sticky top-0 bg-white dark:bg-gray-900 z-40">
