@@ -1,13 +1,22 @@
 'use client';
 
 import { db } from '@/firebase';
+import { useSubscriptionStore } from '@/store/store';
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+import { Loader2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
+import ManageAccountButton from './ManageAccountButton';
 
 const CheckoutButton = () => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
+  const subscription = useSubscriptionStore((state) => state.subscription);
+
+  // todo: check later logic !== undefined
+  const isLoadingSubscription = subscription !== undefined;
+  const isSubscribed =
+    subscription?.status === 'active' && subscription?.role === 'pro';
 
   const createCheckoutSession = async () => {
     if (!session?.user.id) return;
@@ -39,15 +48,20 @@ const CheckoutButton = () => {
     });
   };
 
+  console.log(isLoadingSubscription);
+
   return (
     // if subscribed show it
     <div className="flex flex-col space-y-2">
-      <button
-        onClick={() => createCheckoutSession()}
-        className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white dark:text-white shadow-sm hover:bg-indigo-500 focus-visible:focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-      >
-        {loading ? 'Loading...' : ' Sign Up'}
-      </button>
+      <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white dark:text-white shadow-sm hover:bg-indigo-500 focus-visible:focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex place-content-center">
+        {isSubscribed ? (
+          <ManageAccountButton />
+        ) : isLoadingSubscription || loading ? (
+          <Loader2 className="h-5 w-5 animate-spin" />
+        ) : (
+          <button onClick={() => createCheckoutSession()}>Sign Up</button>
+        )}
+      </div>
     </div>
   );
 };
