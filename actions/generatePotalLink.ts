@@ -15,12 +15,11 @@ export async function generatePotalLink() {
   const session = await getServerSession(authOptions);
   const host = headers().get('host');
 
-  if (session?.user.id) return console.error('No user id found');
+  if (!session?.user.id) return console.error('No user id found');
 
-  // const {
-  //   user: { id },
-  // } = session;
-  const id = session?.user.id!;
+  const {
+    user: { id },
+  } = session;
 
   const returnUrl =
     process.env.NODE_ENV === 'development'
@@ -35,10 +34,10 @@ export async function generatePotalLink() {
 
   const stripeId = doc.data()!.stripeId;
 
-  const stripeSession = await stripe.checkout.sessions.create({
+  const stripeSession = await stripe.billingPortal.sessions.create({
     customer: stripeId,
     return_url: returnUrl,
   });
 
-  redirect(stripeSession.url!);
+  redirect(stripeSession.url);
 }

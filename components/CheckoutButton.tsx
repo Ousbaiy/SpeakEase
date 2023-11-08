@@ -13,10 +13,11 @@ const CheckoutButton = () => {
   const [loading, setLoading] = useState(false);
   const subscription = useSubscriptionStore((state) => state.subscription);
 
-  // todo: check later logic !== undefined
-  const isLoadingSubscription = subscription !== undefined;
+  const isLoadingSubscription = subscription === undefined;
   const isSubscribed =
     subscription?.status === 'active' && subscription?.role === 'pro';
+
+  console.log(subscription?.role);
 
   const createCheckoutSession = async () => {
     if (!session?.user.id) return;
@@ -47,8 +48,6 @@ const CheckoutButton = () => {
       }
     });
   };
-
-  console.log(isLoadingSubscription);
 
   return (
     // if subscribed show it

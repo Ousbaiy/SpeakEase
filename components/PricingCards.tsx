@@ -75,7 +75,7 @@ const PricingCards = ({ redirect }: { redirect: boolean }) => {
               className="mt-10 mb-5 text-sm leading-6 text-gray-600 space-y-8"
             >
               {tier.features.map((feature) => (
-                <li key={feature} className="flex gap-x-3">
+                <li key={feature} className="flex items-center gap-x-3">
                   <CheckIcon
                     className="h-5 w-5 flex-none text-indigo-600"
                     aria-hidden="true"

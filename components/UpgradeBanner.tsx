@@ -10,10 +10,10 @@ const UpgradeBanner = () => {
   const isPro = subscription?.role === 'pro';
   const router = useRouter();
 
-  console.log(subscription);
-  console.log(isPro);
+  console.log(subscription?.role);
 
-  if (subscription !== undefined || isPro) return null;
+  // todo: change later to ===
+  if (subscription === undefined || isPro) return null;
 
   return (
     <Button
