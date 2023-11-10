@@ -40,4 +40,6 @@ export async function generatePotalLink() {
   });
 
   redirect(stripeSession.url);
+  // check auth firebase version
 }
+

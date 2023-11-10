@@ -12,7 +12,6 @@ const UpgradeBanner = () => {
 
   console.log(subscription?.role);
 
-  // todo: change later to ===
   if (subscription === undefined || isPro) return null;
 
   return (

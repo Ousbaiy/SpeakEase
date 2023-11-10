@@ -11,7 +11,6 @@ import UpgradeBanner from './UpgradeBanner';
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
-  console.log(session);
 
   return (
     <header className="sticky top-0 bg-white dark:bg-gray-900 z-40">
@@ -21,7 +20,7 @@ const Header = async () => {
         </Link>
 
         <div className="flex flex-1 items-center justify-end space-x-3">
-          {/* lang select */}
+          {/* <LanguageSelect /> */}
 
           {session ? (
             <>
