@@ -5,12 +5,14 @@ import { useRouter } from 'next/navigation';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import UserAvatar from './UserAvatar';
 import { useSession } from 'next-auth/react';
+import { useLanguageStore } from '@/store/store';
 
 const ChatListRow = ({ chatId }: { chatId: string }) => {
   const { data: session } = useSession();
   const [messages, loading, error] = useCollectionData<Message>(
     limitedSortedMessagesRef(chatId)
   );
+  const language = useLanguageStore((state) => state.language);
   const router = useRouter();
 
   function prettyUUID(n = 4) {
@@ -20,7 +22,7 @@ const ChatListRow = ({ chatId }: { chatId: string }) => {
   const row = (message?: Message) => (
     <div
       key={chatId}
-      onClick={() => router.push('/chat/${chatId}')}
+      onClick={() => router.push(`/chat/${chatId}`)}
       className="flex p-5 items-center gap-x-4 cursor-pointer rounded-md shadow-md dark:shadow-none hover:bg-gray-100 dark:hover:bg-slate-700"
     >
       <UserAvatar
@@ -37,8 +39,8 @@ const ChatListRow = ({ chatId }: { chatId: string }) => {
               .split(' ')[0]}
         </p>
         <p className="text-gray-400 line-clamp-1">
-          {/* {message?.translated.[language] || 'Get the comversation started ...'} */}
-          Get the comversation started
+          {message?.translated?.[language] ||
+            'Get the conversation started ...'}
         </p>
       </div>
 
