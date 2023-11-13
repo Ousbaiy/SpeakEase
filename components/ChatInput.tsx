@@ -42,6 +42,10 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    const inputCopy = values.input.trim();
+    form.reset();
+
+
     if (values.input.length === 0) return;
     if (!session?.user) return;
 
@@ -78,12 +82,10 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
     };
 
     addDoc(messagesRef(chatId), {
-      input: values.input,
+      input: inputCopy,
       timestamp: serverTimestamp(),
       user: userToStore,
     });
-
-    form.reset();
   }
 
   return (
@@ -109,7 +111,10 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="bg-violet-600 text-white">
+          <Button
+            type="submit"
+            className="bg-violet-600 hover:bg-violet-800 duration-300 transition-colors text-white"
+          >
             send
           </Button>
         </form>
