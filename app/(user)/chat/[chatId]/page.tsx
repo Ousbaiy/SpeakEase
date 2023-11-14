@@ -1,3 +1,4 @@
+import AdminControls from '@/components/AdminControls';
 import ChatInput from '@/components/ChatInput';
 import ChatMembersBadge from '@/components/ChatMembersBadge';
 import ChatMessages from '@/components/ChatMessages';
@@ -20,8 +21,8 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
   return (
     <div className='flex flex-col h-screen'>
+      <AdminControls chatId={chatId} />
       <ChatMembersBadge chatId={chatId} />
-      {/* chat memberbadge */}
 
       <div className="flex-1">
         <ChatMessages

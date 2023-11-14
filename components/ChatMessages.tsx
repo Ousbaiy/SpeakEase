@@ -33,7 +33,7 @@ const ChatMessages = ({ chatId, initialMessages }: Props) => {
           <MessageCircleIcon className="h-10 w-10" />
 
           <h2>
-            <span className="font-bold">Invite a frined</span> &{' '}
+            <span className="font-bold">Invite a friend</span> &{' '}
             <span className="font-bold">
               Send your first message in ANY language
             </span>{' '}
@@ -45,7 +45,6 @@ const ChatMessages = ({ chatId, initialMessages }: Props) => {
 
       {messages?.map((message) => {
         const isSender = message.user.id === session?.user?.id;
-        console.log(isSender)
 
         return (
           <div key={message.id} className="flex my-2 items-end">
@@ -67,7 +66,7 @@ const ChatMessages = ({ chatId, initialMessages }: Props) => {
               <div className="flex space-x-2">
                 <p>{message.translated?.[language] || message.input}</p>
                 {!message.translated && (
-                  <div className='flex items-center'>
+                  <div className="flex items-center">
                     <Loader2 className="h-5 w-5 animate-spin" />
                   </div>
                 )}
@@ -76,7 +75,7 @@ const ChatMessages = ({ chatId, initialMessages }: Props) => {
             <UserAvatar
               name={message.user.name}
               image={message.user.image}
-              className={`${!isSender && '-order-1'}}`}
+              className={`${!isSender && '-order-1'} }`}
             />
           </div>
         );
