@@ -17,7 +17,6 @@ const SubscriptionProvider = ({ children }: { children: ReactNode }) => {
       subscriptionRef(session?.user.id),
       (snapshot) => {
         if (snapshot.empty) {
-          console.log('no subscription');
           setSubscrption(null);
           return;
         } else {
