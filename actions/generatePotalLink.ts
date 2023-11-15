@@ -37,9 +37,8 @@ export async function generatePotalLink() {
   const stripeSession = await stripe.billingPortal.sessions.create({
     customer: stripeId,
     return_url: returnUrl,
-  });
+  })
 
   redirect(stripeSession.url);
   // check auth firebase version
 }
-

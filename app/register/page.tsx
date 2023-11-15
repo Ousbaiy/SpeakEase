@@ -5,7 +5,6 @@ import PricingCards from '@/components/PricingCards';
 
 const Register = async () => {
   const session = await getServerSession(authOptions);
-  
 
   return (
     <div className="isolate h-full overflow-hidden dark:bg-gray-900 pb-40 px-5">

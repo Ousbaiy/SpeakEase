@@ -4,7 +4,7 @@ import React from 'react';
 const PricingPage = () => {
   return (
     <div className="isolate overflow-hidden dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pb-96 pt-16 text-center sm:pt-32 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-base font-semibold leading-7 text-indigo-400">
             Pricing
@@ -43,7 +43,7 @@ const PricingPage = () => {
       </div>
 
       <div className="flow-root bg-white pb-24 sm:pb-32">
-        <div className="-mt-80">
+        <div className="-mt-80 mx-5">
           <PricingCards redirect={true} />
         </div>
       </div>

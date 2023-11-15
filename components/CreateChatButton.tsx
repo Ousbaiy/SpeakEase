@@ -7,8 +7,12 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useToast } from './ui/use-toast';
 import { useSubscriptionStore } from '@/store/store';
-import { serverTimestamp, setDoc } from 'firebase/firestore';
-import { addChatRef } from '@/lib/converters/ChatMembers';
+import { getDocs, serverTimestamp, setDoc } from 'firebase/firestore';
+import {
+  addChatRef,
+  chatMembersCollectionGroupRef,
+} from '@/lib/converters/ChatMembers';
+import { ToastAction } from './ui/toast';
 
 const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
   const { data: session } = useSession();
@@ -27,6 +31,32 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
       description: 'Hold tight while we create your new chat...',
       duration: 3000,
     });
+
+    // check if user not pro to limit the number of chats
+    const numberOfChats = (
+      await getDocs(chatMembersCollectionGroupRef(session.user.id))
+    ).docs.map((doc) => doc.data()).length;
+
+    const isPro =
+      subscription?.role === 'pro' && subscription?.status === 'active';
+
+    if (!isPro && numberOfChats >= 2) {
+      toast({
+        title: 'Free plan limit exceeded',
+        description:
+          "You've exceeded the limit of chats for the FREE plan. Ugrade to PRO to continue creating new chats.",
+        variant: 'destructive',
+        action: (
+          <ToastAction
+            altText="Upgrade"
+            onClick={() => router.push('/register')}
+          >
+            Upgrade to PRO
+          </ToastAction>
+        ),
+      });
+      return;
+    }
 
     const chatId = crypto.randomUUID();
 
@@ -60,10 +90,10 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
       });
   };
 
-  if (isLarge) {
+  if (loading) {
     return (
       <div>
-        <Button onClick={createNewChat}>
+        <Button variant="ghost" onClick={createNewChat}>
           {loading ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (

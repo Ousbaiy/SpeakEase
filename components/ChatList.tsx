@@ -3,9 +3,14 @@ import { chatMembersCollectionGroupRef } from '@/lib/converters/ChatMembers';
 import { getDocs } from 'firebase/firestore';
 import { getServerSession } from 'next-auth';
 import ChatListRows from './ChatListRows';
+import { adminDb } from '@/firebase-admin';
 
 const ChatList = async () => {
   const session = await getServerSession(authOptions);
+
+  const doc = await adminDb.collection('customers').doc(session?.user?.id!).get();
+  const stripeId = doc.data()!.stripeId;
+  console.log(stripeId)
 
   const chatSnapshot = await getDocs(
     chatMembersCollectionGroupRef(session?.user?.id!)

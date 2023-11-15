@@ -1,13 +1,27 @@
-import ChatList from '@/components/ChatList'
-import React from 'react'
+import ChatList from '@/components/ChatList';
+import ChatPermissionError from '@/components/ChatPermissionError';
 
+type Props = {
+  params: {};
+  searchParams: {
+    error: string;
+  };
+};
 
-const Chat = () => {
+const Chat = ({ searchParams: { error } }: Props ) => {
+  
+  
   return (
-    <>
-      <ChatList />
-    </>
-  )
-}
+    <div className='p-5'>
+      {error && (
+        <div className="m-2">
+          <ChatPermissionError />
+        </div>
+      )}
 
-export default Chat
+      <ChatList />
+    </div>
+  );
+};
+
+export default Chat;

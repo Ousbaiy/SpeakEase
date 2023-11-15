@@ -54,8 +54,8 @@ const ShareLink = ({ isOpen, chatId, setIsOpen }: Props) => {
     >
       <DialogTrigger asChild>
         <Button variant="outline">
-          <Copy className="mr-2" />
-          Share Link
+          <Copy className="md:mr-2" />
+          <span className="hidden md:flex">Share Link</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm: max-w-md">

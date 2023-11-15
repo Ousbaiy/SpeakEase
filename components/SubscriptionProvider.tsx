@@ -18,7 +18,6 @@ const SubscriptionProvider = ({ children }: { children: ReactNode }) => {
       (snapshot) => {
         if (snapshot.empty) {
           setSubscrption(null);
-          return;
         } else {
           setSubscrption(snapshot.docs[0].data());
         }

@@ -21,7 +21,7 @@ const CheckoutButton = () => {
     if (!session?.user.id) return;
     setLoading(true);
 
-    const docRef = await addDoc(
+  const docRef = await addDoc(
       collection(db, 'customers', session.user.id, 'checkout_sessions'),
       {
         price: 'price_1O8SOSGOan45x41fXwOVGmAW',
@@ -48,8 +48,16 @@ const CheckoutButton = () => {
   };
 
   return (
-    // if subscribed show it
     <div className="flex flex-col space-y-2">
+      {isSubscribed && (
+        <>
+          <hr className="mt-5" />
+          <p className="pt-5 text-center text-xs text-indigo-600">
+            You are subscribed to PRO
+          </p>
+        </>
+      )}
+
       <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white dark:text-white shadow-sm hover:bg-indigo-500 focus-visible:focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex place-content-center">
         {isSubscribed ? (
           <ManageAccountButton />

@@ -26,7 +26,7 @@ const ChatListRows = ({ initialChats }: { initialChats: ChatMembers[] }) => {
         <MessageSquare className="h-10 w-10" />
         <h1 className="text-5xl font-extralight">Welcome!</h1>
         <h2 className="pb-10">
-          Lets et you started by creating your first chat!
+          Lets get you started by creating your first chat!
         </h2>
         <CreateChatButton isLarge />
       </div>
@@ -35,7 +35,7 @@ const ChatListRows = ({ initialChats }: { initialChats: ChatMembers[] }) => {
 
   return (
     <div className='flex flex-col gap-4 '>
-      {members?.map((member, idx) => (
+      {members?.map((member) => (
         <ChatListRow key={member.chatId} chatId={member.chatId} />
       ))}
     </div>

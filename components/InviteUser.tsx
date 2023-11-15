@@ -116,7 +116,6 @@ const InviteUser = ({ chatId }: { chatId: string }) => {
         });
         return;
       }
-      
 
       await setDoc(addChatRef(chatId, user.id), {
         userId: user.id!,
