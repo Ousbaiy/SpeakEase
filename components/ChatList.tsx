@@ -10,7 +10,7 @@ const ChatList = async () => {
 
   const doc = await adminDb.collection('customers').doc(session?.user?.id!).get();
   const stripeId = doc.data()!.stripeId;
-  console.log(stripeId)
+
 
   const chatSnapshot = await getDocs(
     chatMembersCollectionGroupRef(session?.user?.id!)
