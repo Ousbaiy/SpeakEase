@@ -26,7 +26,7 @@ export const LanguagesSupportedMap: Record<LanguagesSupported, string> = {
   ar: 'Arabic',
 };
 
-const LANGUAGES_IN_FREE = 2
+const LANGUAGES_IN_FREE = 2;
 
 interface LanguageState {
   language: LanguagesSupported;
@@ -35,8 +35,10 @@ interface LanguageState {
   getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[];
 }
 
+const selectedLanguage = localStorage.getItem('language') as LanguagesSupported;
+
 export const useLanguageStore = create<LanguageState>((set) => ({
-  language: 'en',
+  language: selectedLanguage || 'en',
   setLanguage: (language) => set({ language }),
   getLanguages: (isPro) => {
     // if the user is pro, return all supported languages
@@ -52,7 +54,9 @@ export const useLanguageStore = create<LanguageState>((set) => ({
   getNotSupportedLanguages: (isPro) => {
     if (isPro) return []; // No unsupported languages
 
-    return Object.keys(LanguagesSupportedMap).slice(LANGUAGES_IN_FREE) as LanguagesSupported[]; // excluding the first two supported kanguages
+    return Object.keys(LanguagesSupportedMap).slice(
+      LANGUAGES_IN_FREE
+    ) as LanguagesSupported[]; // excluding the first two supported kanguages
   },
 }));
 

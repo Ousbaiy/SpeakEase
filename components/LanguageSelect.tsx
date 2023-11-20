@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/select';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const LanguageSelect = () => {
   const [language, setLanguage, getLanguages, getNotSupportedLanguages] =
@@ -26,6 +27,11 @@ const LanguageSelect = () => {
       state.getLanguages,
       state.getNotSupportedLanguages,
     ]);
+
+    // save language value in local storage
+    useEffect(() => {
+      localStorage.setItem('language', language);
+    }, [language]);
 
   const subscription = useSubscriptionStore((state) => state.subscription);
 
