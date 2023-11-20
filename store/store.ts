@@ -35,11 +35,11 @@ interface LanguageState {
   getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[];
 }
 
-const selectedLanguage =
-(localStorage.getItem('language') as LanguagesSupported) || 'en';
+// const selectedLanguage =
+// (localStorage.getItem('language') as LanguagesSupported) || 'en';
 
 export const useLanguageStore = create<LanguageState>((set) => ({
-  language: selectedLanguage,
+  language: 'en',
   setLanguage: (language) => set({ language }),
   getLanguages: (isPro) => {
     // if the user is pro, return all supported languages
