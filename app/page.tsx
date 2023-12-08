@@ -39,7 +39,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/pricing"
-                className='text-sm font-semibold leading-6 text-gray-980 flex items-center dark:text-gray-300 '
+                className="text-sm font-semibold leading-6 text-gray-980 flex items-center dark:text-gray-300 "
               >
                 View Pricing <MoveRight className="h-5 w-5 ml-1.5" />
               </Link>
@@ -51,8 +51,8 @@ export default function Home() {
               <Image
                 src="/dashboard-preview.gif"
                 alt="app screenshot"
-                width={2432}
-                height={1442}
+                width={1200}
+                height={614}
                 className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
               />
             </div>
