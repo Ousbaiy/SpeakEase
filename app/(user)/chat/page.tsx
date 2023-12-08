@@ -1,5 +1,10 @@
 import ChatList from '@/components/ChatList';
 import ChatPermissionError from '@/components/ChatPermissionError';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Chat',
+}
 
 type Props = {
   params: {};

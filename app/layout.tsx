@@ -11,8 +11,15 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SpeakEase',
-  description: 'Connect seamlessly with people worldwide in your native language. SpeakEase uses advanced translation technology for real-time language exchange.',
+  title: {
+    default: 'SpeakEase',
+    template: '%s - SpeakEase',
+  },
+  description:
+    'Connect seamlessly with people worldwide in your native language. SpeakEase uses advanced translation technology for real-time language exchange.',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
@@ -36,7 +43,6 @@ export default function RootLayout({
                   <Header />
                   {children}
                   <Toaster />
-
                 </ThemeProvider>
               </SubscriptionProvider>
             </FirebaseAuthProvider>

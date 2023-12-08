@@ -2,6 +2,11 @@ import React from 'react';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/auth';
 import PricingCards from '@/components/PricingCards';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Register',
+}
 
 const Register = async () => {
   const session = await getServerSession(authOptions);

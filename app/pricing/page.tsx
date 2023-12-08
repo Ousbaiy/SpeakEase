@@ -1,5 +1,9 @@
-import PricingCards from '@/components/PricingCards';
-import React from 'react';
+import PricingCards from '@/components/PricingCards'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Pricing',
+}
 
 const PricingPage = () => {
   return (
