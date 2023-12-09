@@ -105,7 +105,11 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
   }
 
   return (
-    <Button variant="ghost" onClick={createNewChat}>
+    <Button
+      aria-label="Create New Chat"
+      variant="ghost"
+      onClick={createNewChat}
+    >
       <MessageSquarePlusIcon />
     </Button>
   );

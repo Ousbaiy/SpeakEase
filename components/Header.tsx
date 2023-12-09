@@ -27,6 +27,7 @@ const Header = async () => {
             <>
               <Link
                 href="/chat"
+                aria-label='navigate to chat page'
                 prefetch={false}
                 className={buttonVariants({ variant: 'ghost', size: 'sm' })}
               >
