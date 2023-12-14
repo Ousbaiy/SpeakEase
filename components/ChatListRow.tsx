@@ -23,7 +23,7 @@ const ChatListRow = ({ chatId }: { chatId: string }) => {
     <div
       key={chatId}
       onClick={() => router.push(`/chat/${chatId}`)}
-      className="flex px-2 py-5 sm:p-5 items-center gap-x-4 cursor-pointer rounded-md shadow-md dark:shadow-none hover:bg-gray-100 dark:hover:bg-slate-700"
+      className="flex px-2 py-5 sm:p-5 items-center gap-x-4 cursor-pointer rounded-md shadow-md dark:shadow-none border roun hover:bg-gray-100 dark:hover:bg-slate-700"
     >
       <UserAvatar
         name={message?.user.name || session?.user?.name!}
