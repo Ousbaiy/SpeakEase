@@ -28,15 +28,15 @@ const LanguageSelect = () => {
       state.getNotSupportedLanguages,
     ]);
 
-    // save language value in local storage
-    useEffect(() => {
-      localStorage.setItem('language', language);
-    }, [language]);
+  // save language value in local storage
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
 
   const subscription = useSubscriptionStore((state) => state.subscription);
 
   const isPro =
-    subscription?.role === 'pro' && subscription?.status === 'active';
+    subscription?.status === 'active' || subscription?.role === 'pro';
 
   const pathname = usePathname();
   const isChatPage = pathname.includes('/chat');
@@ -45,7 +45,7 @@ const LanguageSelect = () => {
     isChatPage && (
       <div>
         <Select
-          onValueChange={(value: LanguagesSupported) => setLanguage(value)}         
+          onValueChange={(value: LanguagesSupported) => setLanguage(value)}
         >
           <SelectTrigger className="w-[100px]">
             <SelectValue placeholder={LanguagesSupportedMap[language]} />

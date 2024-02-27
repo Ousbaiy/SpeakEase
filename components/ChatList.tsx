@@ -19,7 +19,7 @@ const ChatList = async () => {
   const initialChats = chatSnapshot.docs.map((doc) => ({
     ...doc.data(),
     timestamp: null,
-  }));
+  }))
 
   return (
     <div>

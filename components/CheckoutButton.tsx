@@ -15,7 +15,7 @@ const CheckoutButton = () => {
 
   const isLoadingSubscription = subscription === undefined;
   const isSubscribed =
-    subscription?.status === 'active' && subscription?.role === 'pro';
+    subscription?.status === 'active' || subscription?.role === 'pro';
 
   const createCheckoutSession = async () => {
     if (!session?.user.id) return;

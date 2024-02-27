@@ -70,7 +70,7 @@ const InviteUser = ({ chatId }: { chatId: string }) => {
 
     // check if the user is about to exceed the PRO plan which is 3 chats
     const isPro =
-      subscription?.role === 'pro' && subscription?.status === 'active';
+      subscription?.status === 'active' || subscription?.role === 'pro';
 
     if (!isPro && noOfUsersInChat >= 2) {
       toast({

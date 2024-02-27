@@ -55,7 +55,7 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
     ).length;
 
     const isPro =
-      subscription?.role === 'pro' && subscription?.status === 'active';
+      subscription?.role === 'pro' || subscription?.status === 'active';
 
     if (!isPro && messages >= 20) {
       toast({

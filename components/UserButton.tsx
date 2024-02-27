@@ -47,7 +47,8 @@ const UserButton = ({ session }: { session: Session | null }) => {
           </DropdownMenuItem>
         )}
 
-        {subscription?.role === 'pro' && (
+        {(subscription?.status === 'active' ||
+          subscription?.role === 'pro') && (
           <>
             <DropdownMenuLabel className="flex items-center justify-center space-x-1 text-xs text-[#E935C1] animate-pulse">
               <StarIcon className="h-5 w-5" />

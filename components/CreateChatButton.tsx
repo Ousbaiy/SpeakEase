@@ -38,7 +38,7 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
     ).docs.map((doc) => doc.data()).length;
 
     const isPro =
-      subscription?.role === 'pro' && subscription?.status === 'active';
+    subscription?.status === 'active' || subscription?.role === 'pro';;
 
     if (!isPro && numberOfChats >= 2) {
       toast({
