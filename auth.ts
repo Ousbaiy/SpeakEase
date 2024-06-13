@@ -1,7 +1,8 @@
-import { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import { adminAuth, adminDb } from './firebase-admin';
-import { FirestoreAdapter } from '@auth/firebase-adapter';
+import { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { adminAuth, adminDb } from "./firebase-admin";
+import { FirestoreAdapter } from "@auth/firebase-adapter";
+import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -9,7 +10,14 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
+    }),
   ],
+  // pages: {
+  //   signIn: "/signin", 
+  // },
   callbacks: {
     session: async ({ session, token }) => {
       if (session?.user) {
@@ -27,10 +35,10 @@ export const authOptions: NextAuthOptions = {
         token.sub = user.id;
       }
       return token;
-    }
+    },
   },
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
-  adapter: FirestoreAdapter(adminDb)
+  adapter: FirestoreAdapter(adminDb),
 } satisfies NextAuthOptions;

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   DropdownMenu,
@@ -7,38 +7,34 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import UserAvatar from './UserAvatar';
+} from "@/components/ui/dropdown-menu";
+import UserAvatar from "./UserAvatar";
 
-import { signIn, signOut } from 'next-auth/react';
+import { signOut } from "next-auth/react";
 
-import { Session } from 'next-auth';
-import { Button } from './ui/button';
-import { useSubscriptionStore } from '@/store/store';
-import { Loader2, StarIcon } from 'lucide-react';
-import ManageAccountButton from './ManageAccountButton';
+import { Session } from "next-auth";
+import { useSubscriptionStore } from "@/store/store";
+import { Loader2, StarIcon } from "lucide-react";
+import ManageAccountButton from "./ManageAccountButton";
+import SigninDialog from "./SigninDialog";
 
 const UserButton = ({ session }: { session: Session | null }) => {
   const subscription = useSubscriptionStore((state) => state.subscription);
 
   if (!session) {
-    return (
-      <Button variant="outline" onClick={() => signIn()}>
-        Sign In
-      </Button>
-    );
+    return <SigninDialog />;
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
-          name={session?.user?.name || ''}
-          image={session?.user?.image || ''}
+          name={session?.user?.name || ""}
+          image={session?.user?.image || ""}
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>{session.user?.name || ''}</DropdownMenuLabel>
+        <DropdownMenuLabel>{session.user?.name || ""}</DropdownMenuLabel>
         <DropdownMenuSeparator />
 
         {subscription === undefined && (
@@ -47,8 +43,8 @@ const UserButton = ({ session }: { session: Session | null }) => {
           </DropdownMenuItem>
         )}
 
-        {(subscription?.status === 'active' ||
-          subscription?.role === 'pro') && (
+        {(subscription?.status === "active" ||
+          subscription?.role === "pro") && (
           <>
             <DropdownMenuLabel className="flex items-center justify-center space-x-1 text-xs text-[#E935C1] animate-pulse">
               <StarIcon className="h-5 w-5" />
